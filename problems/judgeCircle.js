@@ -9,8 +9,7 @@
  * @return {boolean}
  */
 var judgeCircle = function(moves) {
-  let result = false;
-  let directionsArr = moves.split('');
+  let directionsArr = moves.split('');  
   let checkArr = [0, 0];
 
   directionsArr.forEach(move => {
