@@ -5,7 +5,6 @@ function rot13(str) {
   for (let i = 0; i < str.length; i++){
 
     if (str[i].charCodeAt(0) + 13 > 90 ){
-      // console.log(str[i].charCodeAt(0));
       str[i] = String.fromCharCode(str[i].charCodeAt(0) - 13);
     } else if (str[i].charCodeAt(0) - 13 <= 90 && str[i].charCodeAt(0) > 64){
       str[i] = String.fromCharCode(str[i].charCodeAt(0) + 13);
