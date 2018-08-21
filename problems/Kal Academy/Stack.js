@@ -15,9 +15,11 @@
 //   Return count
 
 // Create a Stack
-let Stack = function() {
-  this.count = 0;
-  this.storage = {};
+class Stack{
+  constructor(){
+      this.count = 0;
+      this.storage = {};
+  }
 };
 
 //Adds a value to the end(top) of the stack
@@ -50,18 +52,26 @@ Stack.prototype.size = function() {
 };
 
 // Reverse a stack using another stack and a single temp varaiable
+
 let st1 = new Stack();
 let st2 = new Stack();
 let temp = null;
 
-for (let i = 0; i < 30; i++) {
-  st1.push(i);
-}
+// for (let i = 0; i < 30; i++) {
+//   st1.push(i);
+// }
+
+st1.push('first');
+st1.push('second');
+st1.push('third');
+st1.push('forth');
+
 
 for (let i = 0; i < st1.size(); i++) {
   temp = st1.pop();
 
   count = st1.size() - i;
+
   while (count > 0) {
     st2.push(st1.pop());
     count--;
