@@ -30,11 +30,9 @@ class Stack {
   }
 }
 
-/**
- * Scan through all the numbers;
- * operator -> stack
- *
- */
+function isOperator(value) {
+  return ["-", "+", "*", "/", "^"].indexOf(value) !== -1 ? true : false;
+}
 
 function operatorPrecedence(operator) {
   switch (operator) {
@@ -61,10 +59,10 @@ function operatorPrecedence(operator) {
 function infixToPostfix(expr) {
   let operatorStack = new Stack();
   let postfixExpr = [];
-  let exprArr = expr.split("");
+  let exprArr = expr.split(""); // add a multiple digit regex
 
   for (let i = 0; i < exprArr.length; i++) {
-    if (isNaN(exprArr[i])) {
+    if (isOperator(exprArr[i])) {
       // is an operator
       let operator = exprArr[i];
       while (operator) {
@@ -83,7 +81,6 @@ function infixToPostfix(expr) {
           }
         } else {
           operatorStack.push(operator);
-          console.log(operator);
           operator = null;
         }
       }
@@ -95,7 +92,47 @@ function infixToPostfix(expr) {
     postfixExpr.push(operatorStack.pop());
   }
 
-  return postfixExpr.join('');
+  return postfixExpr.join("");
 }
-// console.log(deretminePrecedence(''));
-console.log(infixToPostfix("12+3/4-15*12*12*12-25"));
+
+function evaluateExpression(expression) {
+  let result = new Stack();
+  let postfixExp = infixToPostfix(expression);
+
+  function popTwo(stack) {
+    if (stack.size() < 1) {
+      return undefined;
+    }
+    let right = parseInt(stack.pop());
+    let left = parseInt(stack.pop());
+    return [left, right];
+  }
+
+  for (let i = 0; i < postfixExp.length; i++) {
+    if (isOperator(postfixExp[i])) {
+      switch (postfixExp[i]) {
+        case "-":
+          operands = popTwo(result);
+          result.push(operands[0] - operands[1]);
+          break;
+        case "+":
+          operands = popTwo(result);
+          result.push(operands[0] + operands[1]);
+          break;
+        case "*":
+          operands = popTwo(result);
+          result.push(operands[0] * operands[1]);
+          break;
+        case "/":
+          operands = popTwo(result);
+          result.push(operands[0] / operands[1]);
+          break;
+      }
+    } else {
+      result.push(postfixExp[i]);
+    }
+  }
+  return result.peek();
+}
+
+console.log(evaluateExpression("6+3/3"));
