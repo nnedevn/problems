@@ -37,11 +37,11 @@ function stringToUrl(str){
     if( strArr[i] === ' '){
       strArr[newLength - 1] = '0'; 
       strArr[newLength - 2] = '2';
-      strArr[newLength - 3] = '%'
+      strArr[newLength - 3] = '%';
       newLength -= 3;
     } else {
       strArr[newLength - 1] = strArr [i];
-      newLength --
+      newLength --;
     }
   }
 

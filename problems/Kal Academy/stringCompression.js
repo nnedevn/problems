@@ -1,4 +1,4 @@
-//mplement a method to perform a basic string compression using the counts of repeated characters. For example, the string aabccccaaa would become a2b1c4a3. If the compressed string would not become smaller than the original string, your method should return the original string.
+//Implement a method to perform a basic string compression using the counts of repeated characters. For example, the string aabccccaaa would become a2b1c4a3. If the compressed string would not become smaller than the original string, your method should return the original string.
 
 function uniqueChars(str){
   strArr = str.split('');
@@ -17,24 +17,18 @@ function compressStr(str){
     return str;
   }
 
-  let strMap = [];
-  let result = '';
-
-  for(let i = 0; i < str.length; i++){
-    strMap[str.charCodeAt(i)] ?
-    strMap[str.charCodeAt(i)] += 1 :
-    strMap[str.charCodeAt(i)] = 1
-  }
-
-  for(let i = 0; i < strMap.length; i++){
-    if (strMap[i] !== undefined) {
-      result += String.fromCharCode(i) + strMap[i]
+  let resultStr = '';
+  for (let i = 0; i < str.length; i++){
+    let count = 1;
+    let charContainer = {};
+    while(str[i] === str[i+1]){
+      count ++;
+      i++
     }
+    resultStr += str[i] + count;
   }
 
-  // console.log(strMap[100]);
-
-  return result;
+  return resultStr;
 }
 
 console.log(compressStr('aabccccaaa'));
