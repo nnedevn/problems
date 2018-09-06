@@ -1,6 +1,6 @@
 //Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
-//Variant 1
+//Variant 1:
 function uniqueChars(str){
   let strArr = str.split('');
   strArr = strArr.sort();
@@ -12,4 +12,22 @@ function uniqueChars(str){
   return true;
 }
 
-console.log(uniqueChars('abss'));
+//console.log(uniqueChars('abss'));
+
+//Variant 2:
+
+function uniqueCharsV2(str){
+  let boolArr = Array(256);
+
+  for (let i = 0; i < str.length; i++){
+    if( boolArr[str[i].charCodeAt(0)] === true ){
+      return false;
+    } else {
+      boolArr[str[i].charCodeAt(0)] = true; 
+    }
+  }
+
+  return true;
+}
+
+console.log(uniqueCharsV2('!*@#%&Aa'));
