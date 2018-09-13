@@ -84,28 +84,26 @@ class LinkedList {
 
 //-------
 
-let mylist = new LinkedList;
-let arr = ['r', 'a','c','e','c','a','r'];
+let mylist = new LinkedList();
+let arr = ["r", "a", "c", "e", "c", "a", "r"];
 arr.forEach(element => {
   mylist.push(element);
 });
 
-
-function linkedListPalindrome(linkedList){
+function linkedListPalindrome(linkedList) {
   let tempStack = [];
 
-  for (let i = 0; i < linkedList.length; i++ ){
-    tempStack.push( linkedList.get(i));
+  for (let i = 0; i < linkedList.length; i++) {
+    tempStack.push(linkedList.get(i));
   }
 
-  for (let i = 0; i < linkedList.length; i++){
-    if (linkedList.get(i) !== tempStack.pop()){
+  for (let i = 0; i < linkedList.length; i++) {
+    if (linkedList.get(i) !== tempStack.pop()) {
       return false;
     }
-    return true;
+    
   }
-
-  console.log(tempStack);
+  return true;
 }
 
 console.log(linkedListPalindrome(mylist));
