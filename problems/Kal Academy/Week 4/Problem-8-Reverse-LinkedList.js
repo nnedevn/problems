@@ -1,3 +1,5 @@
+// Reverse a linked list – iteratively and recursively
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -93,6 +95,7 @@ myList.push("eight");
 
 // console.log(myList);
 
+//iteratively
 function reverseLinkedList(linkedList) {
   let prev = null;
   let current = linkedList.head;
@@ -108,7 +111,26 @@ function reverseLinkedList(linkedList) {
   return linkedList;
 }
 
-reverseLinkedList(myList);
+
+//recursively
+
+function reverseLinkedListRec(current){
+  
+  if(current === null){
+      console.log('Am i useful?')
+    return
+    }
+  if(current.next === null){
+    myList.head = current;
+    return;
+  }
+  reverseLinkedListRec(current.next);
+  current.next.next = current;
+  current.next = null; 
+}
+
+reverseLinkedListRec(myList.head);
+
 for (let i = 0; i < myList.length; i++) {
   console.log(myList.get(i));
 }
