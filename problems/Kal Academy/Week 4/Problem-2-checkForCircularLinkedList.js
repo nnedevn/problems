@@ -1,4 +1,3 @@
-//Write an algorithm to determine if a linkedlist is a palindrome
 class Node {
   constructor(value) {
     this.value = value;
@@ -82,27 +81,29 @@ class LinkedList {
   }
 }
 
-//-------
+let testList = new LinkedList();
+testList.push("one");
+testList.push("two");
+testList.push("three");
+testList.push("four");
 
-let mylist = new LinkedList();
-let arr = ["r", "a", "c", "e", "c", "a", "r"];
-arr.forEach(element => {
-  mylist.push(element);
-});
+// create a circular list for testing purposes
+testList.head.next.next.next.next = testList.head;
 
-function linkedListPalindrome(linkedList) {
-  let tempStack = [];
+function hasCycle(linkedList, showNode = false) {
+  let slow = linkedList.head;
+  let fast = linkedList.head.next;
 
-  for (let i = 0; i < linkedList.length; i++) {
-    tempStack.push(linkedList.get(i));
-  }
-
-  for (let i = 0; i < linkedList.length; i++) {
-    if (linkedList.get(i) !== tempStack.pop()) {
-      return false;
+  while (fast != null && fast.next !== null && slow !== null) {
+    if (fast === slow) {
+      return showNode ? fast : true;
+      // return fast;
+      // return true;
     }
-    
-  }return true;
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+  return false;
 }
 
-console.log(linkedListPalindrome(mylist));
+console.log(hasCycle(testList));

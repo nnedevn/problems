@@ -89,22 +89,51 @@ myList.push("one");
 myList.push("two");
 myList.push("two");
 myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
 
 
-function removeDuplicates(linkedList) {
-  let tempSet = new Set();
-  for (let i = 0; i < linkedList.length; i++) {
-    if (tempSet.has(linkedList.get(1))) {
-      linkedList.delete(i);
-    } else {
-      tempSet.add(linkedList.get(i));
-    }
+// with additional data-structure
+function removeDuplicates(node) {
+  if (node === null){
+    return;
   }
 
-  return linkedList;
+  nodes = new Set;
+  prev = null;
+
+  while (node !== null){ 
+    if (nodes.has(node.value)){
+      prev.next = node.next;
+    } else {
+
+      nodes.add(node.value);
+      prev = node;
+    }
+    node = node.next;
+  }
 }
 
-removeDuplicates(myList);
+// without any additional data-structures
+function deDup(node){
+  while (node !== null){
+    let current = node;
+    while (current.next !== null){
+        console.log('in')
+      if (current.next.value === node.value){
+        current.next = current.next.next
+      } else {
+        current = current.next;
+      }
+    }
+    node = node.next;
+  }
+}
+
+
+deDup(myList.head);
 
 for (i = 0; i < myList.length; i++) {
   console.log(myList.get(i));

@@ -1,3 +1,4 @@
+//Write an algorithm to determine if a linkedlist is a palindrome
 class Node {
   constructor(value) {
     this.value = value;
@@ -35,7 +36,7 @@ class LinkedList {
         return current;
       }
       current = current.next;
-      i++;
+      // i++;
     }
     return null;
   }
@@ -61,7 +62,8 @@ class LinkedList {
       this.length--;
       return head.value;
     }
-    const node = this.find(index - 1, this._testIndex);
+    
+    const node = this._find(index - 1, this._testIndex);
     const excise = node.next;
     if (!excise) return null;
     node.next = excise.next;
@@ -81,28 +83,29 @@ class LinkedList {
   }
 }
 
-let testList = new LinkedList();
-testList.push("one");
-testList.push("two");
-testList.push("three");
-testList.push("four");
+//-------
 
-// create a circular list for testing purposes
-// testList.head.next.next.next.next = testList.head;
+let mylist = new LinkedList();
+let arr = ["r", "a", "c", "e", "c", "a", "r"];
+arr.forEach(element => {
+  mylist.push(element);
+});
 
+console.log('Item', mylist.get(0));
 
-function hasCycle(linkedList){
-  let slow = linkedList.head;
-  let fast = linkedList.head.next;
+function linkedListPalindrome(linkedList) {
+  let tempStack = [];
 
-  while (fast != null && fast.next !== null && slow !== null){
-    if (fast === slow){
-      return true;
+  for (let i = 0; i < linkedList.length; i++) {
+    tempStack.push(linkedList.get(i));
+  }
+
+  for (let i = 0; i < linkedList.length; i++) {
+    if (linkedList.get(i) !== tempStack.pop()) {
+      return false;
     }
-    fast =  fast.next.next;
-    slow = slow.next;
-  } 
-  return false;
+    
+  }return true;
 }
 
-console.log(hasCycle(testList));
+console.log(linkedListPalindrome(mylist));

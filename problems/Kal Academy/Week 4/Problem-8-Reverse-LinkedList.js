@@ -93,7 +93,6 @@ myList.push("six");
 myList.push("seven");
 myList.push("eight");
 
-// console.log(myList);
 
 //iteratively
 function reverseLinkedList(linkedList) {
@@ -111,25 +110,26 @@ function reverseLinkedList(linkedList) {
   return linkedList;
 }
 
-
 //recursively
 
-function reverseLinkedListRec(current){
-  
-  if(current === null){
-      console.log('Am i useful?')
-    return
-    }
-  if(current.next === null){
+function reverseLinkedListRec(current) {
+  if (current === null) {
+    console.log("Am i useful?");
+    return;
+  }
+  if (current.next === null) {
     myList.head = current;
     return;
   }
   reverseLinkedListRec(current.next);
   current.next.next = current;
-  current.next = null; 
+  current.next = null;
 }
 
 reverseLinkedListRec(myList.head);
+myList.delete(0);
+myList.delete(0);
+myList.delete(0);
 
 for (let i = 0; i < myList.length; i++) {
   console.log(myList.get(i));
