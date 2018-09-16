@@ -94,21 +94,19 @@ myList.push("two");
 myList.push("two");
 myList.push("two");
 
-
 // with additional data-structure
 function removeDuplicates(node) {
-  if (node === null){
+  if (node === null) {
     return;
   }
 
-  nodes = new Set;
+  nodes = new Set();
   prev = null;
 
-  while (node !== null){ 
-    if (nodes.has(node.value)){
+  while (node !== null) {
+    if (nodes.has(node.value)) {
       prev.next = node.next;
     } else {
-
       nodes.add(node.value);
       prev = node;
     }
@@ -117,13 +115,12 @@ function removeDuplicates(node) {
 }
 
 // without any additional data-structures
-function deDup(node){
-  while (node !== null){
+function deDup(node) {
+  while (node !== null) {
     let current = node;
-    while (current.next !== null){
-        console.log('in')
-      if (current.next.value === node.value){
-        current.next = current.next.next
+    while (current.next !== null) {
+      if (current.next.value === node.value) {
+        current.next = current.next.next;
       } else {
         current = current.next;
       }
@@ -132,10 +129,8 @@ function deDup(node){
   }
 }
 
-
 deDup(myList.head);
 
 for (i = 0; i < myList.length; i++) {
   console.log(myList.get(i));
 }
-
