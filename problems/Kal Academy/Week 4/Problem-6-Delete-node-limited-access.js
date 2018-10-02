@@ -1,5 +1,3 @@
-// Reverse a linked list – iteratively and recursively
-
 class Node {
   constructor(value) {
     this.value = value;
@@ -85,52 +83,27 @@ class LinkedList {
 
 let myList = new LinkedList();
 myList.push("one");
-myList.push("two");
+myList.push("ten");
 myList.push("three");
-myList.push("four");
-myList.push("five");
-myList.push("six");
-myList.push("seven");
-myList.push("eight");
+myList.push("one");
+myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
+myList.push("two");
 
-
-//iteratively
-function reverseLinkedList(linkedList) {
-  let prev = null;
-  let current = linkedList.head;
-
-  while (current !== null) {
-    next = current.next;
-    current.next = prev;
-    prev = current;
-    current = next;
-  }
-  linkedList.head = prev;
-
-  return linkedList;
-}
-
-//recursively
-
-function reverseLinkedListRec(current) {
-  if (current === null) {
-    console.log("Am i useful?");
+function removeNode(node) {
+  if (node === null || node.next === null) {
     return;
   }
-  if (current.next === null) {
-    myList.head = current;
-    return;
-  }
-  reverseLinkedListRec(current.next);
-  current.next.next = current;
-  current.next = null;
+  node.value = node.next.value;
+  node.next = node.next.next;
 }
 
-reverseLinkedListRec(myList.head);
+removeNode(myList.head.next.next);
 
-
-
-
-for (let i = 0; i < myList.length; i++) {
+for (i = 0; i < myList.length; i++) {
   console.log(myList.get(i));
 }
