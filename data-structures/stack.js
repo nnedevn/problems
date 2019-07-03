@@ -1,9 +1,9 @@
 
 function createStack() {
   const array = [];
-  
+
   return {
-    push(item){
+    push(item) {
       array.push(item);
     },
     pop() {
@@ -22,22 +22,22 @@ function createStack() {
 }
 
 class Stack {
-  constructor(){
+  constructor() {
     this.array = [];
   }
-  push(item){
+  push(item) {
     this.array.push(item);
   }
-  pop(){
+  pop() {
     return this.array.pop();
   }
-  peek(){
+  peek() {
     return this.array[this.array.length - 1];
   }
-  get length(){
+  get length() {
     return this.array.length;
   }
-  isEmpty(){
+  isEmpty() {
     return this.array.length === 0;
   }
 }
