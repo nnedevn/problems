@@ -25,4 +25,4 @@ function findSum(arr, sum) {
   return "No subaray found.";
 }
 
-console.log(findSum([15, 2, 4, 8, 9, 5, 10, 23] , 23));
+console.log(findSum([15, 2, 4, 8, 9, 5, 10, 23] , 6));
