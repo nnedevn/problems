@@ -56,17 +56,14 @@ function firstDuplicate(a) {
 
   for (let i = 0; i < a.length; i++){
     if (dupes[a[i]] === undefined){
-      dupes [a[i]] = i
+      dupes [a[i]] = i;
     } else {
-      return a[i]
-  
+      return a[i];
     }
   }
-
   return -1;
-  console.log(dupeArr)
 }
 
-let arr = [2, 3, 3]
+let arr = [2, 3, 3];
 
 console.log(firstDuplicate(arr));
