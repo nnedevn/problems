@@ -51,14 +51,17 @@
 // console.log("firstDuplicate2 executes in", t1 - t0, "ms");
 
 function firstDuplicate(a) {
-
-  let dupeArr = new Array(a.length).fill(0);
+  let dupes = {};
 
   for (let i = 0; i < a.length; i++){
-    if (dupeArr[a[i]] ===)
+    if (dupes[a[i]] === undefined){
+      dupes [a[i]] = i
+    } else {
+      return a[i]
+  
+    }
   }
-
-  console.log(a)
+  return -1;
 }
 
 let arr = [2, 3, 3]
