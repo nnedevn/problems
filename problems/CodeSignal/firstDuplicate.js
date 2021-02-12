@@ -55,9 +55,9 @@ function firstDuplicate(a) {
 
   for (let i = 0; i < a.length; i++){
     if (dupes[a[i]] === undefined){
-      dupes [a[i]] = i
+      dupes [a[i]] = i;
     } else {
-      return a[i]
+      return a[i];
   
     }
   }
